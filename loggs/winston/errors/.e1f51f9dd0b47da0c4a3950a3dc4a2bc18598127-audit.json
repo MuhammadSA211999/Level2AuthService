@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 3
+    },
+    "auditLog": "E:\\next-level\\Backend Braniac\\AuthService\\loggs\\winston\\errors\\.e1f51f9dd0b47da0c4a3950a3dc4a2bc18598127-audit.json",
+    "files": [
+        {
+            "date": 1690810613268,
+            "name": "E:\\next-level\\Backend Braniac\\AuthService\\loggs\\winston\\errors\\project-19-31-07-2023-error.log",
+            "hash": "868fc88d192815f2694079165e7886fd2ac43a7b46e9e0291ffc618f6cdcde51"
+        }
+    ],
+    "hashType": "sha256"
+}

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 import app from './app'
 import config from './confiq/index'
-import logger from './shared/logger'
+import { errorLogger, logger } from './shared/logger'
 
 async function main() {
   try {
@@ -11,7 +11,7 @@ async function main() {
       logger.info(`Application listen on port ${config.port}`)
     })
   } catch (err) {
-    logger.error('Database does not connect and error was', err)
+    errorLogger.error('Database does not connect and error was', err)
   }
 }
 

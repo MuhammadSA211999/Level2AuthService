@@ -1,16 +1,54 @@
-import winston from 'winston'
+import path from 'path'
+import { createLogger, format, transports } from 'winston'
+import DailyRotateFile from 'winston-daily-rotate-file'
+const { combine, timestamp, label, prettyPrint } = format
 
-const logger = winston.createLogger({
+export const logger = createLogger({
   level: 'info',
-  format: winston.format.json(),
+  format: combine(
+    timestamp(),
+    label({ label: process.env.PROJECT_NAME }),
+    prettyPrint(),
+  ),
   transports: [
-    //
-    // - Write all logs with importance level of `error` or less to `error.log`
-    // - Write all logs with importance level of `info` or less to `combined.log`
-    //
-    new winston.transports.Console(),
-    new winston.transports.File({ filename: 'error.log', level: 'error' }),
-    new winston.transports.File({ filename: 'combined.log', level: 'info' }),
+    new transports.Console(),
+    new DailyRotateFile({
+      filename: path.join(
+        process.cwd(),
+        'loggs',
+        'winston',
+        'successes',
+        'auth-%DATE%-success.log',
+      ),
+      datePattern: 'HH-DD-MM-YYYY',
+      zippedArchive: true,
+      maxSize: '20m',
+      maxFiles: '3d',
+    }),
   ],
 })
-export default logger
+
+export const errorLogger = createLogger({
+  level: 'error',
+  format: combine(
+    timestamp(),
+    label({ label: process.env.PROJECT_NAME }),
+    prettyPrint(),
+  ),
+  transports: [
+    new transports.Console(),
+    new DailyRotateFile({
+      filename: path.join(
+        process.cwd(),
+        'loggs',
+        'winston',
+        'errors',
+        'project-%DATE%-error.log',
+      ),
+      datePattern: 'HH-DD-MM-YYYY',
+      zippedArchive: true,
+      maxSize: '20m',
+      maxFiles: '3d',
+    }),
+  ],
+})

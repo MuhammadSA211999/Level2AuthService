@@ -1,0 +1,24 @@
+{
+  message: 'Database connect successfully',
+  level: 'info',
+  timestamp: '2023-07-31T13:14:57.063Z',
+  label: 'Professional_Settings'
+}
+{
+  message: 'Application listen on port 5000',
+  level: 'info',
+  timestamp: '2023-07-31T13:14:57.315Z',
+  label: 'Professional_Settings'
+}
+{
+  message: 'Database connect successfully',
+  level: 'info',
+  timestamp: '2023-07-31T13:22:39.119Z',
+  label: 'Professional_Settings'
+}
+{
+  message: 'Application listen on port 5000',
+  level: 'info',
+  timestamp: '2023-07-31T13:22:39.179Z',
+  label: 'Professional_Settings'
+}
